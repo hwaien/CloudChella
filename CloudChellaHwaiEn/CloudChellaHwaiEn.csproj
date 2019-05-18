@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alias.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="Member.cs" />
+    <Compile Include="Master.cs" />
+    <Compile Include="Release.cs" />
+    <Compile Include="Artist.cs" />
     <Compile Include="Label.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

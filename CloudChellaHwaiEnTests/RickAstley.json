@@ -1,0 +1,27 @@
+{
+  "profile": "Rick Astley (b. February 6, 1966 in Warrington, United Kingdom) was one of figures to rise up in the dance/pop-driven late '80s. He started as a studio-tea-boy in 1985 at the [l279756] and released his first own single in 1987, [i][m=96559][/i].\r\n\r\nIn 2007, Rick Astley became the subject of a viral internet meme in which millions of internet users were tricked into watching Rick Astley's video [i][url=https://youtu.be/dQw4w9WgXcQ]Never Gonna Give You Up[/url][/i] by posting it under the name of other popular video titles. The practice is now known as [url=https://knowyourmeme.com/memes/rickroll]rickrolling[/url].\r\n",
+  "urls": [ "http://www.rickastley.co.uk/", "http://en.wikipedia.org/wiki/Rick_Astley", "https://www.facebook.com/RickAstley", "https://twitter.com/rickastley", "https://myspace.com/rickastley", "https://www.instagram.com/officialrickastley/", "https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw", "https://www.bookogs.com/credit/559827-rick-astley" ],
+  "name": "Rick Astley",
+  "realname": "Richard Paul Astley",
+  "groups": [
+    {
+      "active": true,
+      "id": "146979",
+      "name": "Band Aid II"
+    },
+    {
+      "active": true,
+      "id": "420265",
+      "name": "Ferry Aid"
+    }
+  ],
+  "aliases": [
+    {
+        "id": "1141583",
+      "name": "Dick Spatsley"
+    }
+  ],
+  "id": "72872",
+  "namevariations": [
+    "Astley R.", "R Astley", "R. Asley", "R. Astley", "R.Astley", "Richard Astley", "Rick Ashley", "Rick Asley", "Rick Astle", "Rick Astly" ]
+}

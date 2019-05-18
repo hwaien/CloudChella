@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace CloudChellaHwaiEn
 {
-    [DynamoDBTable("label")]
-    public class Label
+    [DynamoDBTable("release")]
+    public class Release
     {
         [DynamoDBHashKey("id")]
         public string Id { get; set; }
@@ -15,10 +15,10 @@ namespace CloudChellaHwaiEn
         [DynamoDBProperty("profile")]
         public string Profile { get; set; }
 
-        [DynamoDBProperty("urls")]
-        public List<string> Urls { get; set; }
-
         [DynamoDBProperty("contact_info")]
         public string ContactInfo { get; set; }
+
+        [DynamoDBProperty("urls")]
+        public List<string> Urls { get; set; }
     }
 }

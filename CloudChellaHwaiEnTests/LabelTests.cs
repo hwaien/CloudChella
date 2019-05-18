@@ -12,6 +12,7 @@ namespace CloudChellaHwaiEn
         public void object_mapping_works()
         {
             // Arrange
+            var expectedContactInfo = "RCA Records, 1540 Broadway, New York, NY 10036";
             var expectedUrls = new[]
             {
                 "http://www.rcarecords.com/",
@@ -30,6 +31,7 @@ namespace CloudChellaHwaiEn
             Assert.Equal("895", label.Id);
             Assert.Equal("RCA", label.Name);
             Assert.Equal(expectedUrls, label.Urls);
+            Assert.Equal(expectedContactInfo, label.ContactInfo);
         }
     }
 }

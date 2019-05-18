@@ -69,11 +69,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtistTests.cs" />
     <Compile Include="LabelTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FerryAid.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="RCA.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="RickAstley.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
