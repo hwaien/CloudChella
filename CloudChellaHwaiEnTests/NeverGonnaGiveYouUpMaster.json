@@ -1,0 +1,59 @@
+{
+  "id": "96559",
+  "title": "Never Gonna Give You Up",
+  "year": 1987,
+  "main_release": "249504",
+  "most_recent_release": "1612378",
+  "styles": [ "Euro-Disco" ],
+  "genres": [ "Electronic", "Pop" ],
+  "artists": [
+    {
+      "name": "Rick Astley",
+      "id": "72872"
+    }
+  ],
+  "tracklist": [
+    {
+      "duration": "3:32",
+      "position": "A",
+      "type_": "track",
+      "title": "Never Gonna Give You Up"
+    },
+    {
+      "duration": "3:30",
+      "position": "B",
+      "type_": "track",
+      "title": "Never Gonna Give You Up (Instrumental)"
+    }
+  ],
+  "videos": [
+    {
+      "duration": 213,
+      "embed": true,
+      "title": "Rick Astley - Never Gonna Give You Up (Video)",
+      "description": "Rick Astley - Never Gonna Give You Up (Video)",
+      "uri": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+      "duration": 346,
+      "embed": true,
+      "title": "Never Gonna Give You Up (Cake Mix)    Rick Astley 1987",
+      "description": "Never Gonna Give You Up (Cake Mix)    Rick Astley 1987",
+      "uri": "https://www.youtube.com/watch?v=1lN2bSlL5SE"
+    },
+    {
+      "duration": 436,
+      "embed": true,
+      "title": "Rick Astley - Never Gonna Give You Up (Stephen Gilham - PHD Extended Mix)",
+      "description": "Rick Astley - Never Gonna Give You Up (Stephen Gilham - PHD Extended Mix)",
+      "uri": "https://www.youtube.com/watch?v=afKTEsELh_s"
+    },
+    {
+      "duration": 422,
+      "embed": true,
+      "title": "Never Gonna Give You Up (Escape to NY Mix)",
+      "description": "Never Gonna Give You Up (Escape to NY Mix)",
+      "uri": "https://www.youtube.com/watch?v=xoPIl7xvK5Q"
+    }
+  ]
+}
