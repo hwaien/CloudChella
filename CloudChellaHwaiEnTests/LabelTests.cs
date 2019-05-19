@@ -31,7 +31,7 @@ namespace CloudChellaHwaiEn
             Assert.Equal("895", label.Id);
             Assert.Equal("RCA", label.Name);
             Assert.Equal(expectedUrls, label.Urls);
-            Assert.Equal(expectedContactInfo, label.ContactInfo);
+            Assert.Equal(expectedContactInfo, label.contact_info);
         }
     }
 }

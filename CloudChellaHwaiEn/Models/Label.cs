@@ -19,6 +19,6 @@ namespace CloudChellaHwaiEn
         public List<string> Urls { get; set; }
 
         [DynamoDBProperty("contact_info")]
-        public string ContactInfo { get; set; }
+        public string contact_info { get; set; }
     }
 }
