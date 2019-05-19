@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReleaseTests.cs" />
     <Compile Include="MasterTests.cs" />
     <Compile Include="ArtistTests.cs" />
     <Compile Include="LabelTests.cs" />

@@ -20,14 +20,14 @@ namespace CloudChellaHwaiEn
             };
             var expectedMembers = new[]
             {
-                new Member { Id = "5647", Name = "Nik Kershaw", IsActive = true },
-                new Member { Id = "6707", Name = "Mandy Smith", IsActive = true },
-                new Member { Id = "7247", Name = "Samantha Fox", IsActive = true },
-                new Member { Id = "7705", Name = "Juliet Roberts", IsActive = true },
-                new Member { Id = "35301", Name = "Paul McCartney", IsActive = true },
-                new Member { Id = "40576", Name = "Andy Bell", IsActive = true },
-                new Member { Id = "71081", Name = "Kim Wilde", IsActive = true },
-                new Member { Id = "72872", Name = "Rick Astley", IsActive = true }
+                new ArtistMember { Id = "5647", Name = "Nik Kershaw", IsActive = true },
+                new ArtistMember { Id = "6707", Name = "Mandy Smith", IsActive = true },
+                new ArtistMember { Id = "7247", Name = "Samantha Fox", IsActive = true },
+                new ArtistMember { Id = "7705", Name = "Juliet Roberts", IsActive = true },
+                new ArtistMember { Id = "35301", Name = "Paul McCartney", IsActive = true },
+                new ArtistMember { Id = "40576", Name = "Andy Bell", IsActive = true },
+                new ArtistMember { Id = "71081", Name = "Kim Wilde", IsActive = true },
+                new ArtistMember { Id = "72872", Name = "Rick Astley", IsActive = true }
             };
             var regionEndpoint = RegionEndpoint.GetBySystemName("us-west-1");
             var context = new DynamoDBContext(regionEndpoint);
@@ -74,12 +74,12 @@ namespace CloudChellaHwaiEn
             };
             var expectedAliases = new []
             {
-                new Alias { Id = "1141583", Name = "Dick Spatsley" }
+                new ArtistAlias { Id = "1141583", Name = "Dick Spatsley" }
             };
             var expectedGroups = new[]
             {
-                new Group { Id = "146979", Name = "Band Aid II", IsActive = true },
-                new Group { Id = "420265", Name = "Ferry Aid", IsActive = true }
+                new ArtistGroup { Id = "146979", Name = "Band Aid II", IsActive = true },
+                new ArtistGroup { Id = "420265", Name = "Ferry Aid", IsActive = true }
             };
             var regionEndpoint = RegionEndpoint.GetBySystemName("us-west-1");
             var context = new DynamoDBContext(regionEndpoint);
@@ -99,9 +99,9 @@ namespace CloudChellaHwaiEn
             Assert.Equal(expectedUrls, artist.Urls);
         }
 
-        private class AliasEqualityComparer : IEqualityComparer<Alias>
+        private class AliasEqualityComparer : IEqualityComparer<ArtistAlias>
         {
-            public bool Equals(Alias x, Alias y)
+            public bool Equals(ArtistAlias x, ArtistAlias y)
             {
                 if (x == null)
                 {
@@ -114,19 +114,19 @@ namespace CloudChellaHwaiEn
                 }
 
                 return
-                    x.Id.Equals(y.Id) &&
-                    x.Name.Equals(y.Name);
+                    x.Id == y.Id &&
+                    x.Name == y.Name;
             }
 
-            public int GetHashCode(Alias obj)
+            public int GetHashCode(ArtistAlias obj)
             {
                 return AggregateHashCode(obj.Id, obj.Name);
             }
         }
 
-        private class GroupEqualityComparer : IEqualityComparer<Group>
+        private class GroupEqualityComparer : IEqualityComparer<ArtistGroup>
         {
-            public bool Equals(Group x, Group y)
+            public bool Equals(ArtistGroup x, ArtistGroup y)
             {
                 if (x == null)
                 {
@@ -139,20 +139,20 @@ namespace CloudChellaHwaiEn
                 }
 
                 return
-                    x.Id.Equals(y.Id) &&
-                    x.Name.Equals(y.Name) &&
-                    x.IsActive.Equals(y.IsActive);
+                    x.Id == y.Id &&
+                    x.Name == y.Name &&
+                    x.IsActive == y.IsActive;
             }
 
-            public int GetHashCode(Group obj)
+            public int GetHashCode(ArtistGroup obj)
             {
                 return AggregateHashCode(obj.Id, obj.Name, obj.IsActive);
             }
         }
 
-        private class MemberEqualityComparer : IEqualityComparer<Member>
+        private class MemberEqualityComparer : IEqualityComparer<ArtistMember>
         {
-            public bool Equals(Member x, Member y)
+            public bool Equals(ArtistMember x, ArtistMember y)
             {
                 if (x == null)
                 {
@@ -165,12 +165,12 @@ namespace CloudChellaHwaiEn
                 }
 
                 return
-                    x.Id.Equals(y.Id) &&
-                    x.Name.Equals(y.Name) &&
-                    x.IsActive.Equals(y.IsActive);
+                    x.Id == y.Id &&
+                    x.Name == y.Name &&
+                    x.IsActive == y.IsActive;
             }
 
-            public int GetHashCode(Member obj)
+            public int GetHashCode(ArtistMember obj)
             {
                 return AggregateHashCode(obj.Id, obj.Name, obj.IsActive);
             }

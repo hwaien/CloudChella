@@ -28,7 +28,7 @@ namespace CloudChellaHwaiEn
         public List<string> Genres { get; set; }
 
         [DynamoDBProperty("artists")]
-        public List<ArtistCompact> Artists { get; set; }
+        public List<MasterArtist> Artists { get; set; }
 
         [DynamoDBProperty("tracklist")]
         public List<Track> Tracks { get; set; }

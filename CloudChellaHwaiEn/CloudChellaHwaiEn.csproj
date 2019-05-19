@@ -54,16 +54,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alias.cs" />
-    <Compile Include="Video.cs" />
-    <Compile Include="Track.cs" />
-    <Compile Include="ArtistCompact.cs" />
-    <Compile Include="Group.cs" />
-    <Compile Include="Member.cs" />
-    <Compile Include="Master.cs" />
-    <Compile Include="Release.cs" />
-    <Compile Include="Artist.cs" />
-    <Compile Include="Label.cs" />
+    <Compile Include="Models\Artist\ArtistAlias.cs" />
+    <Compile Include="Models\Release\ReleaseArtist.cs" />
+    <Compile Include="Models\Release\ReleaseLabel.cs" />
+    <Compile Include="Models\Release\ReleaseFormat.cs" />
+    <Compile Include="Models\Video.cs" />
+    <Compile Include="Models\Track.cs" />
+    <Compile Include="Models\Master\MasterArtist.cs" />
+    <Compile Include="Models\Artist\ArtistGroup.cs" />
+    <Compile Include="Models\Artist\ArtistMember.cs" />
+    <Compile Include="Models\Master\Master.cs" />
+    <Compile Include="Models\Release\Release.cs" />
+    <Compile Include="Models\Artist\Artist.cs" />
+    <Compile Include="Models\Label.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

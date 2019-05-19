@@ -25,12 +25,12 @@ namespace CloudChellaHwaiEn
         public List<string> NameVariations { get; set; }
 
         [DynamoDBProperty("aliases")]
-        public List<Alias> Aliases { get; set; }
+        public List<ArtistAlias> Aliases { get; set; }
 
         [DynamoDBProperty("groups")]
-        public List<Group> Groups { get; set; }
+        public List<ArtistGroup> Groups { get; set; }
 
         [DynamoDBProperty("members")]
-        public List<Member> Members { get; set; }
+        public List<ArtistMember> Members { get; set; }
     }
 }

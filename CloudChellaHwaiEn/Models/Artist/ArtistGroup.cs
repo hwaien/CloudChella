@@ -2,7 +2,7 @@
 
 namespace CloudChellaHwaiEn
 {
-    public class Group
+    public class ArtistGroup
     {
         [DynamoDBProperty("id")]
         public string Id { get; set; }

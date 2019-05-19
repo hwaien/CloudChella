@@ -2,12 +2,15 @@
 
 namespace CloudChellaHwaiEn
 {
-    public class ArtistCompact
+    public class ArtistMember
     {
         [DynamoDBProperty("id")]
         public string Id { get; set; }
 
         [DynamoDBProperty("name")]
         public string Name { get; set; }
+
+        [DynamoDBProperty("active")]
+        public bool IsActive { get; set; }
     }
 }

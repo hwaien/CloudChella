@@ -8,12 +8,13 @@ using Xunit;
 
 namespace CloudChellaHwaiEn
 {
-    public class MasterTests
+    public class ReleaseTests
     {
         [Fact]
         public void object_mapping_works()
         {
             // Arrange
+            var expectedNotes = "UK Release has a black label with the text \"Manufactured In England\" printed on it.\n\nSleeve:\n\u2117 1987 \u2022 BMG Records (UK) Ltd. \u00a9 1987 \u2022 BMG Records (UK) Ltd.\nDistributed in the UK by BMG Records \u2022  Distribu\u00e9 en Europe par BMG/Ariola \u2022 Vertrieb en Europa d\u00fcrch BMG/Ariola.\n\nCenter labels:\n\u2117 1987 Pete Waterman Ltd.\nOriginal Sound Recording made by PWL.\nBMG Records (UK) Ltd. are the exclusive licensees for the world.\n\nDurations do not appear on the release.";
             var expectedStyles = new[]
             {
                 "Euro-Disco"
@@ -25,12 +26,11 @@ namespace CloudChellaHwaiEn
             };
             var expectedArtists = new[]
             {
-                new MasterArtist { Id = "72872", Name = "Rick Astley" }
+                new ReleaseArtist { Id = "72872", Name = "Rick Astley" }
             };
-            var expectedTracks = new[]
+            var expectedFormats = new[]
             {
-                new Track { Position = "A", Duration = "3:32", Title = "Never Gonna Give You Up", Type = "track" },
-                new Track { Position = "B", Duration = "3:30", Title = "Never Gonna Give You Up (Instrumental)", Type = "track" }
+                new ReleaseFormat { Name = "Vinyl", Descriptions = new List<string> { "7\"", "45 RPM", "Single" } }
             };
             var expectedVideos = new[]
             {
@@ -67,25 +67,121 @@ namespace CloudChellaHwaiEn
                     Embed = true
                 },
             };
+            var expectedLabels = new[] { new ReleaseLabel{ Id = "895", Name = "RCA", EntityType = "Label" } };
+            var expectedTracks = new[]
+            {
+                new Track { Position = "A", Duration = "3:32", Title = "Never Gonna Give You Up", Type = "track" },
+                new Track { Position = "B", Duration = "3:30", Title = "Never Gonna Give You Up (Instrumental)", Type = "track" }
+            };
             var regionEndpoint = RegionEndpoint.GetBySystemName("us-west-1");
             var context = new DynamoDBContext(regionEndpoint);
-            var json = File.ReadAllText("NeverGonnaGiveYouUpMaster.json");
+            var json = File.ReadAllText("NeverGonnaGiveYouUpRelease.json");
             var doc = Document.FromJson(json);
 
             // Act
-            var master = context.FromDocument<Master>(doc);
+            var release = context.FromDocument<Release>(doc);
 
             // Assert
-            Assert.Equal("96559", master.Id);
-            Assert.Equal("Never Gonna Give You Up", master.Title);
-            Assert.Equal(1987, master.Year);
-            Assert.Equal("249504", master.MainReleaseId);
-            Assert.Equal("1612378", master.MostRecentReleaseId);
-            Assert.Equal(expectedStyles, master.Styles);
-            Assert.Equal(expectedGenres, master.Genres);
-            Assert.Equal(expectedArtists, master.Artists, new ArtistCompactEqualityComparer());
-            Assert.Equal(expectedTracks, master.Tracks, new TrackEqualityComparer());
-            Assert.Equal(expectedVideos, master.Videos, new VideoEqualityComparer());
+            Assert.Equal("249504", release.Id);
+            Assert.Equal("Never Gonna Give You Up", release.Title);
+            Assert.Equal(1987, release.Year);
+            Assert.Equal("96559", release.Master);
+            Assert.Equal("UK", release.Country);
+            Assert.Equal(expectedNotes, release.Notes);
+            Assert.Equal(expectedStyles, release.Styles);
+            Assert.Equal(expectedGenres, release.Genres);
+            Assert.Equal(expectedArtists, release.Artists, new ArtistCompactEqualityComparer());
+            Assert.Equal(expectedTracks, release.Tracks, new TrackEqualityComparer());
+            Assert.Equal(expectedVideos, release.Videos, new VideoEqualityComparer());
+            Assert.Equal(expectedLabels, release.Labels, new LabelEqualityComparer());
+            Assert.Equal(expectedFormats, release.Formats, new FormatEqualityComparer());
+        }
+
+        private class FormatEqualityComparer : IEqualityComparer<ReleaseFormat>
+        {
+            public bool Equals(ReleaseFormat x, ReleaseFormat y)
+            {
+                if (x == null)
+                {
+                    return y == null;
+                }
+
+                if (y == null)
+                {
+                    return false;
+                }
+
+                if (x.Name != y.Name)
+                {
+                    return false;
+                }
+
+                if (x.Descriptions == null)
+                {
+                    return y.Descriptions == null;
+                }
+
+                if (y.Descriptions == null)
+                {
+                    return false;
+                }
+
+                if (x.Descriptions.Count != y.Descriptions.Count)
+                {
+                    return false;
+                }
+
+                for (var i = 0; i < x.Descriptions.Count; i++)
+                {
+                    if (x.Descriptions[i] != y.Descriptions[i])
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            public int GetHashCode(ReleaseFormat obj)
+            {
+                var list = new List<object> {obj.Name};
+
+                if (obj.Descriptions != null)
+                {
+                    list.AddRange(obj.Descriptions);
+
+                }
+
+                var array = list.ToArray();
+
+                return AggregateHashCode(array);
+            }
+        }
+
+        private class LabelEqualityComparer : IEqualityComparer<ReleaseLabel>
+        {
+            public bool Equals(ReleaseLabel x, ReleaseLabel y)
+            {
+                if (x == null)
+                {
+                    return y == null;
+                }
+
+                if (y == null)
+                {
+                    return false;
+                }
+
+                return
+                    x.Id == y.Id &&
+                    x.Name == y.Name &&
+                    x.EntityType == y.EntityType;
+            }
+
+            public int GetHashCode(ReleaseLabel obj)
+            {
+                return AggregateHashCode(obj.Id, obj.Name, obj.EntityType);
+            }
         }
 
         private class VideoEqualityComparer : IEqualityComparer<Video>
@@ -143,9 +239,9 @@ namespace CloudChellaHwaiEn
             }
         }
 
-        private class ArtistCompactEqualityComparer : IEqualityComparer<MasterArtist>
+        private class ArtistCompactEqualityComparer : IEqualityComparer<ReleaseArtist>
         {
-            public bool Equals(MasterArtist x, MasterArtist y)
+            public bool Equals(ReleaseArtist x, ReleaseArtist y)
             {
                 if (x == null)
                 {
@@ -162,7 +258,7 @@ namespace CloudChellaHwaiEn
                     x.Name == y.Name;
             }
 
-            public int GetHashCode(MasterArtist obj)
+            public int GetHashCode(ReleaseArtist obj)
             {
                 return AggregateHashCode(obj.Id, obj.Name);
             }
