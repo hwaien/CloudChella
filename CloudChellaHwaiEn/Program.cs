@@ -14,7 +14,7 @@ namespace CloudChellaHwaiEn
                 var rca = context.Load<Label>("895");
                 Console.WriteLine(rca.Name);
                 Console.WriteLine();
-                Console.WriteLine(rca.contact_info);
+                Console.WriteLine(rca.ContactInfo);
                 Console.WriteLine();
                 Console.WriteLine();
 
